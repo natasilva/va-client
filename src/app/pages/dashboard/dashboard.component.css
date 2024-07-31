@@ -1,0 +1,15 @@
+
+.card {
+    max-width: 400px;
+}
+
+.title {
+    font-size: 35px;
+    color:  #DDA31D;
+}
+
+.primay {
+    background-color: #DDA31D;
+    color: white;
+    border: none;
+}
