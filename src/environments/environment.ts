@@ -1,3 +1,4 @@
 export const environment = {
-    api: '',
+    production: true,
+    api: 'https://va-api-tau.vercel.app/api',
 };

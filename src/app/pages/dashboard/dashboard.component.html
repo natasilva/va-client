@@ -1,5 +1,7 @@
 <div class="h-100 d-flex flex-column justify-content-center align-items-center vh-100 pb-3">
-  <span class="title fw-bold mb-3">Acesse seu grupo de atendimento</span>
+  <div class="w-100 text-center">
+    <span class="title fw-bold mb-3">Acesse seu grupo de atendimento</span>
+  </div>
   <div class="card p-4 mt-4 mb-5 d-flex flex-column justify-content-center align-items-center">
     <div class="mb-4 mt-3">
       <img style="width: 150px;" src="../../../assets/images/logo-sem-fundo.png" alt="">
@@ -16,7 +18,10 @@
       <button type="submit" [disabled]="cpfForm.invalid" class="btn primay mt-5">Buscar Grupo</button>
     </form>
     <div *ngIf="(group$ | async) as group" class="mt-3">
-      <a [href]="'https://chat.whatsapp.com/' + group.code" target="_blank" class="btn btn-success">Entrar no Grupo</a>
+      <a [href]="'https://chat.whatsapp.com/' + group?.code" target="_blank" class="btn btn-success">Entrar no Grupo</a>
+    </div>
+    <div *ngIf="showErrorMessage" class="mt-3" style="color: red;">
+      CPF/CNPJ não encontrado
     </div>
   </div>
   <!-- <div class="w-100 ms-0 mb-5">

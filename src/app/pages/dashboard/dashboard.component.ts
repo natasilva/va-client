@@ -17,6 +17,7 @@ export class DashboardComponent {
   cpfForm: FormGroup;
   groupLink: string;
   group$ = new Observable<any>()
+  showErrorMessage: boolean = false
 
   constructor(
     private fb: FormBuilder,
@@ -31,11 +32,21 @@ export class DashboardComponent {
   onSubmit(): void {
     if (this.cpfForm.valid) {
       const params = { cnpjf: this.cpfForm.value.cpf };
-      this.group$ = this.groupService.get(params)
+
+      try {
+        this.group$ = this.groupService.get(params)
+
+        this.group$.subscribe((result) => {
+          if (!result) this.showErrorMessage = true
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
   reset() {
+    this.showErrorMessage = false
     this.group$ = new Observable<any>()
   }
 }
